@@ -13,7 +13,7 @@ const OffersAndCoupons = () => {
     const fetchData = async () => {
       try {
         setLoading(true);
-        const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+        const API_URL = import.meta.env.VITE_API_URL || '';
         
         const [offersRes, couponsRes] = await Promise.all([
           axios.get(`${API_URL}/api/offers/`),

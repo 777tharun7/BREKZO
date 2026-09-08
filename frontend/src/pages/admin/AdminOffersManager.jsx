@@ -19,7 +19,7 @@ const AdminOffersManager = () => {
     const fetchData = async () => {
       try {
         setLoading(true);
-        const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+        const API_URL = import.meta.env.VITE_API_URL || '';
         
         if (activeTab === 'combos') {
           const res = await axios.get(`${API_URL}/api/offers/?admin=true`);
@@ -47,7 +47,7 @@ const AdminOffersManager = () => {
 
   const handleToggleCoupon = async (id) => {
     try {
-      const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+      const API_URL = import.meta.env.VITE_API_URL || '';
       await axios.patch(`${API_URL}/api/offers/coupons/${id}/toggle`);
       setCoupons(prev => prev.map(c => c.id === id ? { ...c, is_active: c.is_active ? 0 : 1 } : c));
       toast.success('Coupon status updated');
@@ -58,7 +58,7 @@ const AdminOffersManager = () => {
 
   const handleToggleOffer = async (id) => {
     try {
-      const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+      const API_URL = import.meta.env.VITE_API_URL || '';
       await axios.patch(`${API_URL}/api/offers/${id}/toggle`);
       setOffers(prev => prev.map(o => o.id === id ? { ...o, is_active: o.is_active ? 0 : 1 } : o));
       toast.success('Offer status updated');
@@ -70,7 +70,7 @@ const AdminOffersManager = () => {
   const handleCreateCoupon = async (e) => {
     e.preventDefault();
     try {
-      const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+      const API_URL = import.meta.env.VITE_API_URL || '';
       await axios.post(`${API_URL}/api/offers/coupons`, {
         code: newCoupon.code,
         discount_percent: newCoupon.discount_percent ? parseFloat(newCoupon.discount_percent) : null,
@@ -91,7 +91,7 @@ const AdminOffersManager = () => {
   const handleCreateOffer = async (e) => {
     e.preventDefault();
     try {
-      const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+      const API_URL = import.meta.env.VITE_API_URL || '';
       await axios.post(`${API_URL}/api/offers`, {
         title: newOffer.title,
         description: newOffer.description,

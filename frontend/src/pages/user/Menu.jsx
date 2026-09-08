@@ -46,7 +46,7 @@ const Menu = () => {
     const fetchData = async () => {
       try {
         setLoading(true);
-        const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+        const API_URL = import.meta.env.VITE_API_URL || '';
         
         const [canteenRes, categoriesRes] = await Promise.all([
           axios.get(`${API_URL}/api/canteens/${canteenId}`),
@@ -68,7 +68,7 @@ const Menu = () => {
   useEffect(() => {
     const fetchMenu = async () => {
       try {
-        const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+        const API_URL = import.meta.env.VITE_API_URL || '';
         const res = await axios.get(`${API_URL}/api/menu/canteen/${canteenId}`, {
           params: { category: activeCategory, search }
         });
@@ -123,7 +123,7 @@ const Menu = () => {
     
     setIsPlacingOrder(true);
     try {
-      const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+      const API_URL = import.meta.env.VITE_API_URL || '';
       const orderPayload = {
         user_id: user.id, // Dynamically passing the logged in user's ID
         canteen_id: parseInt(canteenId),

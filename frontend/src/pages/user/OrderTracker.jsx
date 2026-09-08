@@ -19,7 +19,7 @@ const OrderTracker = () => {
   const submitFeedback = async () => {
     setSubmittingReview(true);
     try {
-      const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+      const API_URL = import.meta.env.VITE_API_URL || '';
       const userStr = localStorage.getItem('breakzo_user');
       const user = userStr ? JSON.parse(userStr) : null;
       if (!user) return;
@@ -52,7 +52,7 @@ const OrderTracker = () => {
   useEffect(() => {
     const fetchOrder = async () => {
       try {
-        const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+        const API_URL = import.meta.env.VITE_API_URL || '';
         const res = await axios.get(`${API_URL}/api/orders/${id}`);
         setOrder(res.data);
       } catch (error) {
@@ -65,7 +65,7 @@ const OrderTracker = () => {
     fetchOrder();
 
     // Setup WebSocket connection
-    const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+    const API_URL = import.meta.env.VITE_API_URL || '';
     const socket = io(API_URL);
     
     socket.on('connect', () => {

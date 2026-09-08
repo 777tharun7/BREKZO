@@ -16,7 +16,7 @@ const KitchenDashboard = () => {
   useEffect(() => {
     const fetchOrders = async () => {
       try {
-        const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+        const API_URL = import.meta.env.VITE_API_URL || '';
         const res = await axios.get(`${API_URL}/api/orders/canteen/${canteenId}/active`);
         setOrders(res.data);
       } catch (error) {
@@ -29,7 +29,7 @@ const KitchenDashboard = () => {
     fetchOrders();
 
     // Setup WebSocket
-    const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+    const API_URL = import.meta.env.VITE_API_URL || '';
     const socket = io(API_URL);
     
     socket.on('connect', () => {
@@ -53,7 +53,7 @@ const KitchenDashboard = () => {
 
   const updateStatus = async (orderId, newStatus) => {
     try {
-      const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+      const API_URL = import.meta.env.VITE_API_URL || '';
       
       // Optimitic update
       setOrders(prev => prev.map(o => 
@@ -80,7 +80,7 @@ const KitchenDashboard = () => {
     } catch (error) {
       toast.error('Failed to update status');
       // Revert on error
-      const res = await axios.get(`${import.meta.env.VITE_API_URL || 'http://localhost:8000'}/api/orders/canteen/${canteenId}/active`);
+      const res = await axios.get(`${import.meta.env.VITE_API_URL || ''}/api/orders/canteen/${canteenId}/active`);
       setOrders(res.data);
     }
   };
@@ -92,7 +92,7 @@ const KitchenDashboard = () => {
     }
     setVerifying(true);
     try {
-      const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+      const API_URL = import.meta.env.VITE_API_URL || '';
       const res = await axios.post(`${API_URL}/api/pickup/verify`, {
         canteen_id: canteenId,
         pickup_code: pickupCode
@@ -123,7 +123,7 @@ const KitchenDashboard = () => {
   const verifyScannedCode = async (code, orderId) => {
     setVerifying(true);
     try {
-      const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+      const API_URL = import.meta.env.VITE_API_URL || '';
       const res = await axios.post(`${API_URL}/api/pickup/verify`, {
         canteen_id: canteenId,
         pickup_code: code

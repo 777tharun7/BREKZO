@@ -15,7 +15,7 @@ const WeatherVibe = () => {
   useEffect(() => {
     const fetchAIRecommendations = async () => {
       try {
-        const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+        const API_URL = import.meta.env.VITE_API_URL || '';
         const res = await axios.get(`${API_URL}/api/ai/recommendations/${user?.id || 1}`);
         setRecommendations(res.data.recommendations);
         setVibeMessage(res.data.vibe);

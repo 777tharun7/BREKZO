@@ -25,7 +25,7 @@ const UserLayout = () => {
 
     if (!user) return;
 
-    const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+    const API_URL = import.meta.env.VITE_API_URL || '';
     const socket = io(API_URL);
 
     socket.on('connect', () => {

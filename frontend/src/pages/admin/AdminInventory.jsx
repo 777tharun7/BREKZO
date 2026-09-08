@@ -16,7 +16,7 @@ const AdminInventory = () => {
 
   const fetchInventory = async () => {
     try {
-      const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+      const API_URL = import.meta.env.VITE_API_URL || '';
       const res = await axios.get(`${API_URL}/api/inventory/${canteenId}`);
       setInventory(res.data);
     } catch (error) {
@@ -30,7 +30,7 @@ const AdminInventory = () => {
     const amount = prompt("Enter amount to restock:");
     if (!amount || isNaN(amount)) return;
     try {
-      const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+      const API_URL = import.meta.env.VITE_API_URL || '';
       await axios.post(`${API_URL}/api/inventory/${canteenId}/restock`, {
         ingredient_id: id,
         amount: parseFloat(amount)

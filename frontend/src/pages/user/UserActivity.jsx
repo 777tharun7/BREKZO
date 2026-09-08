@@ -24,7 +24,7 @@ const UserActivity = () => {
       if (!user) return;
       try {
         setLoading(true);
-        const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+        const API_URL = import.meta.env.VITE_API_URL || '';
         const offset = (currentPage - 1) * itemsPerPage;
         const res = await axios.get(`${API_URL}/api/orders/user/${user.id}?limit=${itemsPerPage}&offset=${offset}`);
         setOrders(res.data.orders);
@@ -74,7 +74,7 @@ const UserActivity = () => {
   const submitFeedback = async () => {
     setSubmittingReview(true);
     try {
-      const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+      const API_URL = import.meta.env.VITE_API_URL || '';
       await axios.post(`${API_URL}/api/reviews/`, {
         user_id: user.id,
         order_id: activeOrder.id,

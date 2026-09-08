@@ -21,7 +21,7 @@ const WalletAndLoyalty = () => {
     if (!user) return;
     try {
       setLoading(true);
-      const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+      const API_URL = import.meta.env.VITE_API_URL || '';
       const offset = (currentPage - 1) * itemsPerPage;
       const res = await axios.get(`${API_URL}/api/wallet/${user.id}/transactions?limit=${itemsPerPage}&offset=${offset}`);
       setTransactions(res.data.transactions);
@@ -46,7 +46,7 @@ const WalletAndLoyalty = () => {
     
     setProcessing(true);
     try {
-      const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+      const API_URL = import.meta.env.VITE_API_URL || '';
       const res = await axios.post(`${API_URL}/api/wallet/topup`, {
         user_id: user.id,
         amount: Number(topupAmount),

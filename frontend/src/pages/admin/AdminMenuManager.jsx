@@ -33,7 +33,7 @@ const AdminMenuManager = () => {
   const fetchMenu = async () => {
     try {
       setLoading(true);
-      const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+      const API_URL = import.meta.env.VITE_API_URL || '';
       
       const [menuRes, catRes] = await Promise.all([
         axios.get(`${API_URL}/api/menu/canteen/${canteenId}`, {
@@ -64,7 +64,7 @@ const AdminMenuManager = () => {
   const handleDelete = async (itemId) => {
     if (window.confirm('Are you sure you want to delete this item?')) {
       try {
-        const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+        const API_URL = import.meta.env.VITE_API_URL || '';
         await axios.delete(`${API_URL}/api/menu/${itemId}`);
         toast.success('Item deleted');
         fetchMenu();
@@ -76,7 +76,7 @@ const AdminMenuManager = () => {
 
   const toggleAvailability = async (item) => {
     try {
-      const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+      const API_URL = import.meta.env.VITE_API_URL || '';
       await axios.put(`${API_URL}/api/menu/${item.id}`, {
         is_available: !item.is_available
       });
@@ -135,7 +135,7 @@ const AdminMenuManager = () => {
         });
       };
       
-      const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+      const API_URL = import.meta.env.VITE_API_URL || '';
       const payload = { 
         ...formData, 
         canteen_id: canteenId,

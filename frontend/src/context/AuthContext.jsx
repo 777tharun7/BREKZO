@@ -26,7 +26,7 @@ export const AuthProvider = ({ children }) => {
   const login = async (phone, otp, name) => {
     try {
       // For development, point to local backend if not in prod
-      const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+      const API_URL = import.meta.env.VITE_API_URL || '';
       const res = await axios.post(`${API_URL}/api/auth/verify-otp`, { phone, otp, name });
       
       if (res.data.success) {

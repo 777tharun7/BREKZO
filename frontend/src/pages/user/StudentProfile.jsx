@@ -33,7 +33,7 @@ const StudentProfile = () => {
   const handleSave = async () => {
     setSaving(true);
     try {
-      const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+      const API_URL = import.meta.env.VITE_API_URL || '';
       await axios.patch(`${API_URL}/api/student/${user.id}/profile`, {
         name,
         allergies,

@@ -10,7 +10,7 @@ const AdminReviews = () => {
   useEffect(() => {
     const fetchReviews = async () => {
       try {
-        const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+        const API_URL = import.meta.env.VITE_API_URL || '';
         const res = await axios.get(`${API_URL}/api/reviews/`);
         setReviews(res.data);
       } catch (error) {

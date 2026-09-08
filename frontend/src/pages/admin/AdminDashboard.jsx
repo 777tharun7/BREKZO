@@ -16,7 +16,7 @@ const AdminDashboard = () => {
 
   const fetchDashboardData = async () => {
     try {
-      const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+      const API_URL = import.meta.env.VITE_API_URL || '';
       const [statsRes, canteensRes] = await Promise.all([
         axios.get(`${API_URL}/api/analytics/dashboard`),
         axios.get(`${API_URL}/api/canteens/`)
@@ -36,7 +36,7 @@ const AdminDashboard = () => {
 
   const toggleCanteenStatus = async (canteenId, currentStatus) => {
     try {
-      const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+      const API_URL = import.meta.env.VITE_API_URL || '';
       await axios.patch(`${API_URL}/api/canteens/${canteenId}/status`, {
         is_open: !currentStatus
       });

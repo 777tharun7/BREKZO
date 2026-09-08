@@ -15,7 +15,7 @@ const AdminOrderHistory = () => {
     const fetchOrders = async () => {
       try {
         setLoading(true);
-        const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+        const API_URL = import.meta.env.VITE_API_URL || '';
         const offset = (currentPage - 1) * itemsPerPage;
         const res = await axios.get(`${API_URL}/api/orders/canteen/${canteenId}/all?limit=${itemsPerPage}&offset=${offset}`);
         setOrders(res.data.orders);
