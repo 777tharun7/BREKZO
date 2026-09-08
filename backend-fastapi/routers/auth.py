@@ -23,20 +23,20 @@ class VerifyOTPRequest(BaseModel):
 
 @router.post("/send-otp")
 async def send_otp(req: SendOTPRequest):
-    """Simulate OTP sending - any 6-digit code will work"""
+    """Simulate OTP sending - any 4-digit or 6-digit code will work"""
     if not req.phone or len(req.phone) < 10:
         raise HTTPException(status_code=400, detail="Invalid phone number")
-    # Simulated: store "123456" as valid OTP for any phone
-    _otp_store[req.phone] = "123456"
-    return {"success": True, "message": f"OTP sent to {req.phone}", "hint": "Use any 6-digit code or 123456"}
+    # Simulated: store OTP for phone
+    _otp_store[req.phone] = "1234"
+    return {"success": True, "message": f"OTP sent to {req.phone}", "hint": "Use any 4-digit code (e.g. 1234)"}
 
 
 @router.post("/verify-otp")
 async def verify_otp(req: VerifyOTPRequest):
     """Verify OTP and return user session"""
-    # Simulated: accept any 4-digit OTP
-    if len(req.otp) != 4 or not req.otp.isdigit():
-        raise HTTPException(status_code=400, detail="OTP must be 4 digits")
+    # Accept any 4-digit or 6-digit numeric OTP in simulation mode
+    if len(req.otp) not in (4, 6) or not req.otp.isdigit():
+        raise HTTPException(status_code=400, detail="OTP must be 4 or 6 digits")
 
     # Determine role
     assigned_role = "admin" if req.phone == "1234567890" else "student"
