@@ -178,7 +178,11 @@ async def create_pool():
         pool = await asyncpg.create_pool(dsn=DATABASE_URL, timeout=3)
         print("Connected successfully to PostgreSQL database.")
     except Exception as e:
-        db_path = os.path.join(os.path.dirname(__file__), "breakzo.db")
+        orig_db = os.path.join(os.path.dirname(__file__), "breakzo.db")
+        db_path = "/tmp/breakzo.db" if os.environ.get("VERCEL") else orig_db
+        if os.environ.get("VERCEL") and os.path.exists(orig_db) and not os.path.exists(db_path):
+            import shutil
+            shutil.copy2(orig_db, db_path)
         print(f"PostgreSQL not accessible ({e}). Falling back to SQLite database at {db_path}...")
         pool = SQLitePool(db_path)
     return pool
