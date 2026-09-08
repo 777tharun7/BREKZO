@@ -1,0 +1,28 @@
+# Node / Frontend
+frontend/node_modules/
+frontend/dist/
+frontend/dist-ssr/
+frontend/*.local
+frontend/.env.local
+frontend/.env.*.local
+
+# Python / Backend
+backend-fastapi/__pycache__/
+backend-fastapi/*.pyc
+backend-fastapi/*.pyo
+backend-fastapi/venv/
+backend-fastapi/.venv/
+backend-fastapi/output.txt
+backend-fastapi/.env
+
+# Database (local SQLite files if any)
+*.sqlite
+*.sqlite3
+
+# OS & IDE
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+*.swo

@@ -1,0 +1,10 @@
+fastapi
+uvicorn[standard]
+python-socketio
+pydantic
+httpx
+python-multipart
+aiosqlite
+databases
+asyncpg
+python-dotenv

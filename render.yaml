@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: breakzo-backend
+    env: python
+    buildCommand: pip install -r backend-fastapi/requirements.txt
+    startCommand: cd backend-fastapi && uvicorn main:socket_app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.0
+      - key: DATABASE_URL
+        fromDatabase:
+          name: breakzo-db
+          property: connectionString
+
+databases:
+  - name: breakzo-db
+    databaseName: breakzo
+    user: breakzo_user
