@@ -7,9 +7,9 @@ frontend/.env.local
 frontend/.env.*.local
 
 # Python / Backend
-backend-fastapi/__pycache__/
-backend-fastapi/*.pyc
-backend-fastapi/*.pyo
+**/__pycache__/
+*.py[cod]
+*$py.class
 backend-fastapi/venv/
 backend-fastapi/.venv/
 backend-fastapi/output.txt
