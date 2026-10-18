@@ -1,10 +1,17 @@
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+backend-fastapi/.env
+frontend/.env.local
+frontend/.env.*.local
+!frontend/.env.example
+
 # Node / Frontend
 frontend/node_modules/
 frontend/dist/
 frontend/dist-ssr/
 frontend/*.local
-frontend/.env.local
-frontend/.env.*.local
 
 # Python / Backend
 **/__pycache__/
@@ -13,11 +20,14 @@ frontend/.env.*.local
 backend-fastapi/venv/
 backend-fastapi/.venv/
 backend-fastapi/output.txt
-backend-fastapi/.env
 
-# Database (local SQLite files if any)
+# Local databases and transient database state
 *.sqlite
 *.sqlite3
+*.db
+*.db-shm
+*.db-wal
+*.db-journal
 
 # OS & IDE
 .DS_Store
